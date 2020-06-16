@@ -11,8 +11,11 @@ import java.util.Map;
 
 @Controller
 public class MainController {
-    @Autowired
-    private UserRepository userRepo;
+    private final UserRepository userRepo;
+
+    public MainController(UserRepository userRepo) {
+        this.userRepo = userRepo;
+    }
 
     @GetMapping("/")
     public String greeting(Map<String, Object> model) {
@@ -20,31 +23,9 @@ public class MainController {
     }
 
     @GetMapping("/main")
-    public String main(/*@RequestParam(required = false, defaultValue = "") String filter,*/ Model model) {
+    public String main(Model model) {
         Iterable<User> users = userRepo.findAll();
-
-       /* if (filter != null && !filter.isEmpty()) {
-            users = userRepo.findByName(filter);
-        } */
-     /*  else {
-            users = userRepo.findAll();
-        }*/
         model.addAttribute("users", users);
-      //  model.addAttribute("filter", filter);
-
         return "main";
     }
-
-  /*  @PostMapping("/main")
-    public String add(@RequestParam String name, @RequestParam String email, Map<String, Object> model) {
-        User user = new User(name, email);
-
-        userRepo.save(user);
-
-        Iterable<User> users = userRepo.findAll();
-
-        model.put("users", users);
-
-        return "main";
-    }*/
 }

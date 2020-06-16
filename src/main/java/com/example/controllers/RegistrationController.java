@@ -17,8 +17,11 @@ import java.util.Map;
 
 @Controller
 public class RegistrationController {
-    @Autowired
-    private UserRepository userRepo;
+    private final UserRepository userRepo;
+
+    public RegistrationController(UserRepository userRepo) {
+        this.userRepo = userRepo;
+    }
 
     @GetMapping("/registration")
     public String registration() {

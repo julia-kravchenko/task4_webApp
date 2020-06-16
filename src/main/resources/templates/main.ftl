@@ -6,30 +6,31 @@
     <div class="form-group mb-4"></div>
     <form action="/user/action" method = "post">
         <div class="form-group mb-6">
-            <input type="submit" name="activity" value="delete"/>
-            <input type="submit" name="activity" value="block"/>
-            <input type="submit" name="activity" value="unlock"/>
+            <button class="btn btn-primary" type="submit" name="action" value="delete">Delete</button>
+            <button class="btn btn-primary" type="submit" name="action" value="block">Block</button>
+            <button  class="btn btn-primary" type="submit"name="action" value="unblock">Unblock</button>
         </div>
 
         <div class="form-group mb-4"></div>
 
-        <table valign="center" class="table table-hover table-bordered">
+        <table border="1" valign="center">
             <thead>
             <tr align="center" valign="center">
                 <th width="100"><label><input type="checkbox" name="selectAll" id="selectAll"
                                               autocomplete="off" onclick="selectAll(this)">Select/unselect all
-                <th scope="col">ID</th>
-                <th scope="col">Role</th>
-                <th scope="col">Username</th>
-                <th scope="col">Email</th>
-                <th scope="col">Date of registration</th>
-                <th scope="col">Active</th>
+                <th width = "60">ID</th>
+                <th width = "80">Role</th>
+                <th width = "120">Username</th>
+                <th width = "120">Email</th>
+                <th width = "120">Date of registration</th>
+                <th width = "70">Active</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <#if users??><#list users as user>
             <tr align="center" valign="middle">
+                <input type="hidden" value="${_csrf.token}" name="_csrf">
                 <td><input type="checkbox" id="select" value="${user.id!}" name="userId"></td>
                 <td>${user.id!}</td>
                 <td><#list user.roles as role>${role!}<#sep>,</#list></td>
