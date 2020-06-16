@@ -4,6 +4,7 @@ import com.example.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -12,10 +13,17 @@ public class UserController {
     @Autowired
     private UserRepository userRepo;
 
-    @DeleteMapping("/main")
+  /*  @DeleteMapping("/main")
     public String deleteUser(@RequestParam (value = "activity"),
                              @RequestParam("name") String[] userId) {
 
         return "main";
     }
+
+    @PostMapping("/main")
+        public String accessUser(@RequestParam (value = "activity")) {
+
+            return "main";
+        }
+    }*/
 }
