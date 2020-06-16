@@ -29,7 +29,11 @@ public class RegistrationController {
     public String addUser(User user, Map<String, Object> model) {
         User userFromDb = userRepo.findByUsername(user.getUsername());
         if (userFromDb != null) {
-            model.put("message", "User exists!");
+            model.put("message", "User with this login exists!");
+            return "registration";
+        }
+        else if(user.getUsername().isEmpty() || user.getPassword().isEmpty() || user.getEmail().isEmpty()) {
+            model.put("message", "ERROR!Empty fields");
             return "registration";
         }
         Calendar calendar = Calendar.getInstance();

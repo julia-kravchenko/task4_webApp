@@ -2,7 +2,9 @@
 <#import "parts/login.ftl" as l>
 
 <@c.page>
-Login page
-<@l.login "/login" />
-<a href="/registration">Add new user</a>
+    Authorization
+    <div class="form-group mb-4"></div>
+    <@l.login "/login" />
+    <div class="form-group mb-4"></div>
+    <a href="/registration">Sign Up</a>
 </@c.page>

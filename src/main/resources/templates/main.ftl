@@ -3,29 +3,23 @@
 
 <@c.page>
     <@l.logout />
-    <div class="form-group mb-6"></div>
-    <div><input type="submit" value="Block"/></div>
     <div class="form-group mb-4"></div>
-    <script>
-        $(function () {
-            $("#selectAll").click(function () {
-                $('input:checkbox:not(:disabled)').prop('checked', this.checked);
-            });
-        })
-    </script>
+    <form action="/UserController" >
+        <div class="form-group mb-6">
+            <input type="submit" name="activity" value="Delete"/>
+            <input type="submit" name="activity" value="Block"/>
+            <input type="submit" name="activity" value="Unlock"/>
+        </div>
+    </form>
+    <div class="form-group mb-4"></div>
 
-    <table class="table table-hover">
+    <table valign="center" class="table table-hover table-bordered">
         <thead>
-        <tr>
-            <th scope="col">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Select/unselect all
-                    </label>
-                </div>
-            </th>
+        <tr align="center" valign="center">
+            <th width="100"><label><input type="checkbox" name="selectAll" id="selectAll"
+                                          autocomplete="off" onclick="selectAll(this)">Select/unselect all
             <th scope="col">ID</th>
+            <th scope="col">Role</th>
             <th scope="col">Username</th>
             <th scope="col">Email</th>
             <th scope="col">Date of registration</th>
@@ -34,23 +28,26 @@
         </thead>
         <tbody>
         <tr>
-            <#list users as user>
-            <th scope="row">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1"></label>
-                </div>
-            </th>
-            <th scope="row">${user.id}</th>
-            <td>${user.getUsername()}</td>
-            <td>${user.getEmail()}</td>
-            <td>${user.getDateRegistration()}</td>
+
+            <#if users??><#list users as user>
+        <tr align="center" valign="middle">
+            <td><input type="checkbox" id="select" value="${user.id!}" name="userId"></td>
+            <td>${user.id!}</td>
+            <td><#list user.roles as role>${role!}<#sep>,</#list></td>
+            <td>${user.username!}</td>
+            <td>${user.email!}</td>
+            <td>${user.dateRegistration!}</td>
             <td>${user.isActive()?string('yes','no')}</td>
         </tr>
-        </tbody>
-
-        <#else>
-            No users
         </#list>
+        </#if>
+        </tbody>
     </table>
 </@c.page>
+<script>
+    $(function () {
+        $("#selectAll").click(function () {
+            $('input:checkbox:not(:disabled)').prop('checked', this.checked);
+        });
+    })
+</script>
