@@ -7,4 +7,6 @@
     <@l.login "/login" />
     <div class="form-group mb-4"></div>
     <a href="/registration">Sign Up</a>
+    <div class="form-group mb-4"></div>
+    <a href="/main">Main page</a>
 </@c.page>

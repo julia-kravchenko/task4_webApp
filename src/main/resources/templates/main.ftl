@@ -23,7 +23,7 @@
                 <th width = "120">Username</th>
                 <th width = "120">Email</th>
                 <th width = "120">Date of registration</th>
-                <th width = "70">Active</th>
+                <th width = "120">Status</th>
             </tr>
             </thead>
             <tbody>
@@ -37,7 +37,7 @@
                 <td>${user.username!}</td>
                 <td>${user.email!}</td>
                 <td>${user.dateRegistration!}</td>
-                <td>${user.isActive()?string('yes','no')}</td>
+                <td>${user.isActive()?string('active','blocked')}</td>
             </tr>
             </tbody>
             </#list>
