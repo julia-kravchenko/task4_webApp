@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>task4_web_app</artifactId>
+    <artifactId>task4_webApp</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <parent>
