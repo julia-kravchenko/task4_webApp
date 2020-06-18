@@ -13,7 +13,7 @@
 
         <div class="form-group mb-4"></div>
 
-        <table border="1" valign="center">
+        <table class="table" valign="center">
             <thead>
             <tr align="center" valign="center">
                 <th width="100"><label><input type="checkbox" name="selectAll" id="selectAll"
